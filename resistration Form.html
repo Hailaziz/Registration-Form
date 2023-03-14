@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang='en'>
+    <head>
+        <meta charset="UTF-8">
+        <title>Registration Form</title>
+        <style>
+            form input[type="submit"] {
+                margin-top: 10px;
+                padding: 10px;
+                background-color: #4CAF50;
+                color: white;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+            }
+            form input[type="text"], form input[type="email"], form input[type="tel"], form input[type="password"], form select {
+                padding: 10px;
+                border: none;
+                border-radius: 5px;
+                margin-top: 5px;
+                width: 100%;
+            }
+            form input[type="text"]:invalid, form input[type="email"]:invalid, form input[type="tel"]:invalid, form input[type="password"]:invalid, form select:invalid {
+                border: 2px solid black;
+            }
+            form input[type="text"]:focus, form input[type="email"]:focus, form input[type="tel"]:focus, form input[type="password"]:focus, form select:focus {
+                border: 2px solid #4CAF50;
+                outline: none;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Registration Form</h1>
+        <p>Please Fill The Form</p>
+        <form method="post" action= '#'>
+            <label for="Name">Name :<input id="Name" name="Name" type='text' required></label>
+            <label for="Email">E-mail :<input id="Email" name="Email" type='text' required></label>
+            <label for="Phone number">Phone Number :<input id="Phone number" name="Phone number" type='tel' required></label>
+            <label for="password">Password :<input id="password" name="password" type='password' pattern="[a-z0-5]{8,}" required></label>
+            <label for="gender">Gender :
+                <select id="gender" name="gender">
+                    <option value="">(select one)</option>
+                    <option value="1">Male</option>
+                    <option value="2">Female</option>
+                    <option value="3">Custom</option>
+                </select>
+            </label>
+            <input type="submit" value="Submit" />
+        </form>
+        <script>
+            function validateForm() {
+                let emailInput = document.getElementById("Email");
+                let emailValue = emailInput.value.trim();
+                let emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailRegex.test(emailValue)) {
+                    alert("Please enter a valid email address.");
+                    emailInput.focus();
+                    return false;
+                }
+                return true;
+            }
+        </script>
+    </body>
+
+</html>
