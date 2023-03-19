@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Registration Page</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<style>
+		body {
+			background-color: #f2f2f2;
+			font-family: Arial, sans-serif;
+			color: #444;
+			font-size: 16px;
+			line-height: 1.6;
+			margin: 0;
+			padding: 0;
+		}
+
+		h1 {
+			text-align: center;
+			margin-top: 50px;
+			margin-bottom: 30px;
+			color: #1f3259;
+		}
+
+		form {
+			max-width: 500px;
+			margin: 0 auto;
+			padding: 20px;
+			border: 1px solid #ccc;
+			border-radius: 5px;
+			background-color: #fff;
+			box-shadow: 0 0 10px rgba(0,0,0,0.1);
+		}
+
+		label {
+			display: block;
+			margin-bottom: 10px;
+			color: #333;
+			font-size: 18px;
+			font-weight: bold;
+		}
+
+		input[type="text"], input[type="email"], input[type="password"], input[type="tel"], input[type="submit"] {
+			display: block;
+			width: 100%;
+			padding: 10px;
+			margin-bottom: 20px;
+			border: 1px solid #ccc;
+			border-radius: 5px;
+			font-size: 16px;
+			font-family: Arial, sans-serif;
+			color: #555;
+			background-color: #f7f7f7;
+		}
+
+		input[type="submit"] {
+			background-color: #1f3259;
+			color: #fff;
+			cursor: pointer;
+			transition: background-color 0.3s ease;
+		}
+
+		input[type="submit"]:hover {
+			background-color: #325288;
+		}
+
+		.error-message {
+			color: #d94c4c;
+			font-size: 14px;
+			margin-top: 5px;
+		}
+	</style>
+</head>
+<body>
+	<h1>Registration Form</h1>
+	<form action="#" method="post" onsubmit="return validateForm()">
+		<label for="name">Name:</label>
+		<input type="text" id="name" name="name" required>
+
+		<label for="email">Email:</label>
+		<input type="email" id="email" name="email" required>
+
+		<label for="password">Password:</label>
+		<input type="password" id="password" name="password" minlength="8" required>
+
+		<label for="phone">Phone Number:</label>
+		<input type="tel" id="phone" name="phone" pattern="[0-9]{10}" required>
+
+		<input type="submit" value="Submit">
+
+		<!-- Error messages for incomplete or incorrect fields -->
+		<div id="error-messages">
+			<span class="error-message" id="name-error"></span>
+			<span class="error-message" id="email-error"></span>
+			<span class="error-message" id="password-error"></span>
+			<span class="error-message" id="phone-error"></span>
+		</div>
+	</form>
+
+	<!-- JavaScript validation -->
+	<script>
+		function validateForm() {
+			const name = document.forms[0]["name"].value;
+			const email = document.forms[0]["email"].value;
+			const password = document.forms[0]["password"].value;
+			const phone = document.forms[0]["phone"].value;
+
+			if (name == "") {
+				alert("Name must be filled out");
+				return false;
+			}
+
+			if (email == "" || !email.includes("@")) {
+				alert("Invalid email address");
+				return false;
+			}
+
+			if (password == "" || password.length < 8) {
+				alert("Password must be at least 8 characters");
+				return false;
+			}
+
+			if (phone == "" || phone.length < 10) {
+				alert("Invalid phone number");
+				return false;
+			}
+		}
+	</script>
